@@ -73,7 +73,7 @@ router.delete("" , async( req ,res ) => {
 
     const products = await Product.deleteMany().lean().exec();
   
-     redis.del("products");
+     redis.flushAll();
 
     return res.send( {fromserver : products});
     
